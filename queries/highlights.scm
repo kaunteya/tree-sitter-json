@@ -1,16 +1,36 @@
+; highlights.scm
+
 (pair
-  key: (_) @string.special.key)
+  key: (_) @keyword
+)
 
-(string) @string
+; Primitive values
+(pair
+  value: (string) @value.string ; String that is value against a key
+)
+(array (string) @value.string) ;String that is an array element
+(number) @value.number
+(null) @value.null
 
-(number) @number
-
+; Booleans
 [
-  (null)
   (true)
   (false)
-] @constant.builtin
+] @value.bool
 
-(escape_sequence) @escape
 
-(comment) @comment
+; Brackets
+[
+  "{"
+  "}"
+  "["
+  "]"
+] @punctuation.bracket
+
+; Delimiters
+[
+  ":"
+  ","
+] @punctuation.delimiter
+
+(ERROR) @error
